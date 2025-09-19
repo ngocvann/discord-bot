@@ -1,4 +1,5 @@
-import discord_no_voice as discord
+import discord_no_voice 
+import discord
 from discord.ext import commands
 import json
 import os
@@ -303,5 +304,8 @@ async def on_message(message):
 
     if "bot ngu" in message.content.lower():
         await message.channel.send(f"{message.author.mention} mày ngu 😇")
+
+    if "bot ngoo" in message.content.lower():
+        await message.channel.send(f"{message.author.mention} mày ngoo 😇")
 
 bot.run(TOKEN)
