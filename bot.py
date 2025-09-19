@@ -16,6 +16,7 @@ intents.members = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
+
 #load coin 
 COIN_FILE =  "coins.json"
 
@@ -289,5 +290,18 @@ async def on_message(message):
 @bot.command()
 async def hello(ctx):
     await ctx.send("Hê lô người đẹp -.-")
+
+
+
+#dung co matday voi dan em xitin
+@bot.event
+async def on_message(message):
+    global game_active, current_word, used_words, last_player
+
+    if message.author.bot:
+        return  
+
+    if "bot ngu" in message.content.lower():
+        await message.channel.send(f"{message.author.mention} mày ngu 😇")
 
 bot.run(TOKEN)
