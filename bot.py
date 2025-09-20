@@ -231,7 +231,12 @@ async def on_message(message):
     pattern_xitin = r"\b(?:xì tin|xìtin|xitin|xtin|xjtin|xitjn|xì tjn| xìtjn)\b"
     pattern_van = r"\b(?:ngoc van|ngọc văn|ngọc vân|ngoc vân|vân|van)\b"
     pattern_linda = r"\b(?:linda|lindá|lindà|ljnđa|ljnda|linđa)\b"
-    pattern_may = r"\b(?:mây|may!mày|m|mài|mi)\b"
+    pattern_may = r"\b(?:mây|may|mày|m|mài|mi)\b"
+    pattern_ancut = r"\b(?:ăn cứt|ăn cớt)\b"
+    pattern_occho = r"\b(?:óc chó)\b"
+    pattern_ocheo = r"\b(?:óc heo)\b"
+    pattern_ocbo = r"\b(?:óc bò)\b"
+    pattern_troctru = r"\b(?:trốc tru)\b"
 
     if re.search(
         fr"({pattern_bot}.*{pattern_ngu}|{pattern_ngu}.*{pattern_bot}|"
@@ -244,7 +249,60 @@ async def on_message(message):
     ):
         await message.channel.send(f"{message.author.mention} Mày ngu 😇")
 
+    if re.search(
+        fr"({pattern_bot}.*{pattern_ancut}|{pattern_ancut}.*{pattern_bot}|"
+        fr"{pattern_xitin}.*{pattern_ancut}|{pattern_ancut}.*{pattern_xitin}|"
+        fr"{pattern_van}.*{pattern_ancut}|{pattern_ancut}.*{pattern_van}|"
+        fr"{pattern_linda}.*{pattern_ancut}|{pattern_ancut}.*{pattern_linda}|"
+        fr"{pattern_may}.*{pattern_ancut}|{pattern_ancut}.*{pattern_may})",
+        text,
+        re.IGNORECASE
+    ):
+        await message.channel.send(f"{message.author.mention} Mày ăn cứt 😇")
 
+    if re.search(
+        fr"({pattern_bot}.*{pattern_occho}|{pattern_occho}.*{pattern_bot}|"
+        fr"{pattern_xitin}.*{pattern_occho}|{pattern_occho}.*{pattern_xitin}|"
+        fr"{pattern_van}.*{pattern_occho}|{pattern_occho}.*{pattern_van}|"
+        fr"{pattern_linda}.*{pattern_occho}|{pattern_occho}.*{pattern_linda}|"
+        fr"{pattern_may}.*{pattern_occho}|{pattern_occho}.*{pattern_may})",
+        text,
+        re.IGNORECASE
+    ):
+        await message.channel.send(f"{message.author.mention} Mày óc chó 😇")
+
+    if re.search(
+        fr"({pattern_bot}.*{pattern_ocheo}|{pattern_ocheo}.*{pattern_bot}|"
+        fr"{pattern_xitin}.*{pattern_ocheo}|{pattern_ocheo}.*{pattern_xitin}|"
+        fr"{pattern_van}.*{pattern_ocheo}|{pattern_ocheo}.*{pattern_van}|"
+        fr"{pattern_linda}.*{pattern_ocheo}|{pattern_ocheo}.*{pattern_linda}|"
+        fr"{pattern_may}.*{pattern_ocheo}|{pattern_ocheo}.*{pattern_may})",
+        text,
+        re.IGNORECASE
+    ):
+        await message.channel.send(f"{message.author.mention} Mày óc heo 😇")
+
+    if re.search(
+        fr"({pattern_bot}.*{pattern_ocbo}|{pattern_ocbo}.*{pattern_bot}|"
+        fr"{pattern_xitin}.*{pattern_ocbo}|{pattern_ocbo}.*{pattern_xitin}|"
+        fr"{pattern_van}.*{pattern_ocbo}|{pattern_ocbo}.*{pattern_van}|"
+        fr"{pattern_linda}.*{pattern_ocbo}|{pattern_ocbo}.*{pattern_linda}|"
+        fr"{pattern_may}.*{pattern_ocbo}|{pattern_ocbo}.*{pattern_may})",
+        text,
+        re.IGNORECASE
+    ):
+        await message.channel.send(f"{message.author.mention} Mày óc bò 😇")
+
+    if re.search(
+        fr"({pattern_bot}.*{pattern_troctru}|{pattern_troctru}.*{pattern_bot}|"
+        fr"{pattern_xitin}.*{pattern_troctru}|{pattern_troctru}.*{pattern_xitin}|"
+        fr"{pattern_van}.*{pattern_troctru}|{pattern_troctru}.*{pattern_van}|"
+        fr"{pattern_linda}.*{pattern_troctru}|{pattern_troctru}.*{pattern_linda}|"
+        fr"{pattern_may}.*{pattern_troctru}|{pattern_troctru}.*{pattern_may})",
+        text,
+        re.IGNORECASE
+    ):
+        await message.channel.send(f"{message.author.mention} Mày óc bò 😇")
         
     if game_active and not message.content.startswith("!"):
         text = message.content.strip().lower()
