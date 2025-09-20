@@ -223,17 +223,16 @@ async def stopnoichu(ctx):
 
 @bot.event
 async def on_message(message):
+    if message.author == bot.user or message.author.bot:
+        return
     global game_active, current_word, used_words, last_player
-
-    if message.author.bot:
-        return  
     
     if "bot ngu" in message.content.lower():
         await message.channel.send(f"{message.author.mention} mày ngu 😇")
 
-    if "bot ngoo" in message.content.lower():
+    elif "bot ngoo" in message.content.lower():
         await message.channel.send(f"{message.author.mention} mày ngoo 😇")
-
+        
     if game_active and not message.content.startswith("!"):
         text = message.content.strip().lower()
         words = text.split()  # tách thành list từ
