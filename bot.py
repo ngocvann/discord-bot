@@ -229,8 +229,8 @@ async def on_message(message):
     pattern_bot = r"b\s*[oóòọỏõôồốộổỗơờớợởỡ]+\s*t+"
     pattern_ngu = r"n\s*g\s*[uúùụủũưứừựửữ]+\s*"
 
-    if re.search(fr"{pattern_bot}\s*{pattern_ngu}", text):
-        await message.channel.send(f"{message.author.mention} mày ngu 😇")
+    if re.search(fr"{pattern_bot}.*{pattern_ngu}", text):
+        await message.channel.send(f"{message.author.mention} Mày ngu 😇")
         
     if game_active and not message.content.startswith("!"):
         text = message.content.strip().lower()
