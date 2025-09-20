@@ -227,13 +227,12 @@ async def on_message(message):
     text = message.content.lower()
 
     pattern_bot   = r"b\s*[oóòọỏõôồốộổỗơờớợởỡ]+\s*t+"
-    pattern_ngu   = r"n\s*g\s*[uúùụủũưứừựửữoóòọỏõôồốộổỗ]+\s*"
+    pattern_ngu = r"\bng(?:[uúùụủũ]+|[oóòọỏõôồốộổỗ]+)\b"
     pattern_xitin = r"x\s*[ìi]\s*t\s*i\s*n+"
-    pattern_van   = r"ng[oóòọỏõôồốộổỗơờớợởỡ]+c\s*v[aáàạảãâầấậẩẫăằắặẳẵ]n"
-    pattern_linda = r"l\s*i\s*n\s*d[aáàạảãâầấậẩẫăằắặẳẵ]"
-    pattern_may   = r"m[aáàạảãâầậẩẫăằắặẳẵy]"
+    pattern_van = r"\b(?:ngoc van|ngọc văn|ngọc vân|ngoc vân)\b"
+    pattern_linda = r"\b(?:linda|lindá|lindà|ljnđa|ljnda|linđa)\b"
+    pattern_may = r"\b(?:m|ma[yỳýỷỹ]|mây)\b"
 
-    # check cả 2 thứ tự
     if re.search(
         fr"({pattern_bot}.*{pattern_ngu}|{pattern_ngu}.*{pattern_bot}|"
         fr"{pattern_xitin}.*{pattern_ngu}|{pattern_ngu}.*{pattern_xitin}|"
@@ -244,6 +243,7 @@ async def on_message(message):
         re.IGNORECASE
     ):
         await message.channel.send(f"{message.author.mention} Mày ngu 😇")
+
 
         
     if game_active and not message.content.startswith("!"):
