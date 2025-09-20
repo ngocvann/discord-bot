@@ -211,15 +211,11 @@ async def stopnoichu(ctx):
         return
     
     game_active = False
-    if last_player:
-        user_id = str(last_player.id)
-        if user_id not in coins:
-            coins[user_id] = {"coin": 0, "last_daily": ""}
-        coins[user_id]["coin"] += 1000
-        save_coins(coins)
-        await ctx.send(f"🏆 Không nối được nữa, {last_player.mention} chiến thắng và nhận **1000 coin**!")
-    else:
-        await ctx.send("⏹ Trò chơi nối chữ đã kết thúc mà không có người chơi nào.")
+    current_word = None
+    used_words = []
+    last_player = None
+    
+    await ctx.send("⏹ Trò chơi nối chữ đã bị dừng lại.")
 
 @bot.event
 async def on_message(message):
