@@ -302,7 +302,7 @@ async def on_message(message):
         text,
         re.IGNORECASE
     ):
-        await message.channel.send(f"{message.author.mention} Mày óc bò 😇")
+        await message.channel.send(f"{message.author.mention} Mày trốc tru 😇")
         
     if game_active and not message.content.startswith("!"):
         text = message.content.strip().lower()
