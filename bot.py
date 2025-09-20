@@ -231,7 +231,7 @@ async def on_message(message):
     pattern_xitin = r"\b(?:xì tin|xìtin|xitin|xtin|xjtin|xitjn|xì tjn| xìtjn)\b"
     pattern_van = r"\b(?:ngoc van|ngọc văn|ngọc vân|ngoc vân|vân|van)\b"
     pattern_linda = r"\b(?:linda|lindá|lindà|ljnđa|ljnda|linđa)\b"
-    pattern_may = r"\b(?:mây|may)\b"
+    pattern_may = r"\b(?:mây|may!mày|m|mài|mi)\b"
 
     if re.search(
         fr"({pattern_bot}.*{pattern_ngu}|{pattern_ngu}.*{pattern_bot}|"
