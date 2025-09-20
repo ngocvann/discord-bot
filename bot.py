@@ -7,6 +7,7 @@ from datetime import datetime
 import random
 import asyncio
 from dotenv import load_dotenv
+import re
 
 load_dotenv() 
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -222,12 +223,14 @@ async def on_message(message):
     if message.author == bot.user or message.author.bot:
         return
     global game_active, current_word, used_words, last_player
-    
-    if "bot ngu" in message.content.lower():
-        await message.channel.send(f"{message.author.mention} mày ngu 😇")
 
-    elif "bot ngoo" in message.content.lower():
-        await message.channel.send(f"{message.author.mention} mày ngoo 😇")
+    text = message.content.lower()
+
+    pattern_bot = r"b\s*[oóòọỏõôồốộổỗơờớợởỡ]+\s*t+"
+    pattern_ngu = r"n\s*g\s*[uúùụủũưứừựửữ]+\s*"
+
+    if re.search(fr"{pattern_bot}\s*{pattern_ngu}", text):
+        await message.channel.send(f"{message.author.mention} mày ngu 😇")
         
     if game_active and not message.content.startswith("!"):
         text = message.content.strip().lower()
