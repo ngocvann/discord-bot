@@ -227,11 +227,11 @@ async def on_message(message):
     text = message.content.lower()
 
     pattern_bot   = r"b\s*[oóòọỏõôồốộổỗơờớợởỡ]+\s*t+"
-    pattern_ngu = r"\bng(?:[uúùụủũ]+|[oóòọỏõôồốộổỗ]+)\b"
-    pattern_xitin = r"x\s*[ìi]\s*t\s*i\s*n+"
-    pattern_van = r"\b(?:ngoc van|ngọc văn|ngọc vân|ngoc vân)\b"
+    pattern_ngu = r"\bng(?:[uúùụũ]+|[oóòọỏõôồốộổỗ]+)\b"
+    pattern_xitin = r"\b(?:xì tin|xìtin|xitin|xtin|xjtin|xitjn|xì tjn| xìtjn)\b"
+    pattern_van = r"\b(?:ngoc van|ngọc văn|ngọc vân|ngoc vân|vân|van)\b"
     pattern_linda = r"\b(?:linda|lindá|lindà|ljnđa|ljnda|linđa)\b"
-    pattern_may = r"\b(?:m|ma[yỳýỷỹ]|mây)\b"
+    pattern_may = r"\b(?:mây|may)\b"
 
     if re.search(
         fr"({pattern_bot}.*{pattern_ngu}|{pattern_ngu}.*{pattern_bot}|"
