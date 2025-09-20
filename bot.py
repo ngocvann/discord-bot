@@ -19,18 +19,25 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 
 #load coin 
-COIN_FILE =  "coins.json"
+COINS_FILE =  "coins.json"
 
 def load_coins():
-    if os.path.exists(COIN_FILE):
-        with open (COIN_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
+    """Load coins từ file (backup)"""
+    if os.path.exists(COINS_FILE):
+        try:
+            with open(COINS_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except:
+            return {}
     return {}
 
-#luu coin
-def save_coins (data):
-    with open (COIN_FILE, "w", encoding="utf-8 ") as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
+def save_coins(data):
+    """Save coins vào file (backup)"""
+    try:
+        with open(COINS_FILE, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
+    except Exception as e:
+        print(f"Lỗi save coins: {e}")
 
 coins = load_coins()
 
@@ -220,6 +227,12 @@ async def on_message(message):
 
     if message.author.bot:
         return  
+    
+    if "bot ngu" in message.content.lower():
+        await message.channel.send(f"{message.author.mention} mày ngu 😇")
+
+    if "bot ngoo" in message.content.lower():
+        await message.channel.send(f"{message.author.mention} mày ngoo 😇")
 
     if game_active and not message.content.startswith("!"):
         text = message.content.strip().lower()
@@ -292,20 +305,5 @@ async def on_message(message):
 async def hello(ctx):
     await ctx.send("Hê lô người đẹp -.-")
 
-
-
-#dung co matday voi dan em xitin
-@bot.event
-async def on_message(message):
-    global game_active, current_word, used_words, last_player
-
-    if message.author.bot:
-        return  
-
-    if "bot ngu" in message.content.lower():
-        await message.channel.send(f"{message.author.mention} mày ngu 😇")
-
-    if "bot ngoo" in message.content.lower():
-        await message.channel.send(f"{message.author.mention} mày ngoo 😇")
 
 bot.run(TOKEN)
